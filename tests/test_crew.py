@@ -93,7 +93,9 @@ class TestCrewBuilding:
         mock_output = MagicMock()
         mock_output.raw = "Some research findings"
         mock_output.agent = "Research Analyst"
-        crew.tasks[0].callback(mock_output)
+        cb = crew.tasks[0].callback
+        assert cb is not None
+        cb(mock_output)
 
         assert len(callback_calls) == 1
         assert callback_calls[0][0] == "agent_step"

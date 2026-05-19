@@ -17,7 +17,7 @@ class PaperQueryTool(BaseTool):
         "Search the local corpus of academic papers (arXiv PDFs) for relevant information. "
         "Use this for finding technical details, definitions, and research findings."
     )
-    args_schema: type[BaseModel] = _QueryInput  # type: ignore[assignment]
+    args_schema: type[BaseModel] = _QueryInput
     _query_engine: Any = None
 
     def __init__(self, index: VectorStoreIndex, top_k: int = 5, **kwargs: Any) -> None:

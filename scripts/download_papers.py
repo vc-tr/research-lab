@@ -26,7 +26,7 @@ PAPERS: dict[str, str] = {
     "2402.01680": "LLM Judges: A Survey on LLM-as-a-Judge",
     "2404.10667": "Many-Shot In-Context Learning",
     "2305.18290": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
-    "2312.11805": "The Landscape of Emerging AI Agent Architectures for Reasoning, Planning, and Tool Use",
+    "2312.11805": "The Landscape of Emerging AI Agent Architectures",  # noqa: E501
     "2406.12832": "GraphRAG: From Local to Global with Graph-Based RAG",
 }
 

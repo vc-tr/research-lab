@@ -39,7 +39,7 @@ def anyio_backend() -> str:
 class TestHealthEndpoint:
     @pytest.mark.anyio
     async def test_health_returns_ok(self) -> None:
-        transport = ASGITransport(app=app)  # type: ignore[arg-type]
+        transport = ASGITransport(app=app)
         async with AsyncClient(transport=transport, base_url="http://test") as client:
             resp = await client.get("/health")
             assert resp.status_code == 200
@@ -50,7 +50,7 @@ class TestResearchEndpoint:
     @pytest.mark.anyio
     @patch("research_lab.api.app._run_crew_sync", side_effect=_fake_run_crew_sync)
     async def test_research_streams_sse_events(self, mock_run: Any) -> None:
-        transport = ASGITransport(app=app)  # type: ignore[arg-type]
+        transport = ASGITransport(app=app)
         async with (
             AsyncClient(transport=transport, base_url="http://test") as client,
             client.stream(
@@ -79,7 +79,7 @@ class TestResearchEndpoint:
 
     @pytest.mark.anyio
     async def test_research_rejects_empty_question(self) -> None:
-        transport = ASGITransport(app=app)  # type: ignore[arg-type]
+        transport = ASGITransport(app=app)
         async with AsyncClient(transport=transport, base_url="http://test") as client:
             resp = await client.post("/research", json={"question": ""})
             assert resp.status_code == 422

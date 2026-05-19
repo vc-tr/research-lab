@@ -47,7 +47,11 @@ def _run_crew_sync(
     settings = get_settings()
 
     def step_callback(event_type: str, agent: str, content: str) -> None:
-        event = StreamEvent(type=event_type, agent=agent, content=content)  # type: ignore[arg-type]
+        event = StreamEvent(
+            type=event_type,
+            agent=agent,
+            content=content,
+        )
         loop.call_soon_threadsafe(queue.put_nowait, event)
 
     crew = build_crew(question, settings, step_callback=step_callback, max_subtasks=max_subtasks)

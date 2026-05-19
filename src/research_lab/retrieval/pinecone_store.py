@@ -15,4 +15,4 @@ def get_vector_store(settings: Settings) -> BasePydanticVectorStore:
 
     pc = PineconeClient(api_key=settings.pinecone_api_key)
     index = pc.Index(settings.pinecone_index_name)
-    return PineconeVectorStore(pinecone_index=index)  # type: ignore[return-value]
+    return PineconeVectorStore(pinecone_index=index)
