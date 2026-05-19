@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -18,9 +19,22 @@ from research_lab.retrieval.pinecone_store import get_vector_store
 from research_lab.retrieval.web_search import get_web_search_tool
 
 
+def _export_llm_env(settings: Settings) -> None:
+    """LiteLLM reads provider keys from os.environ; export from settings."""
+    if settings.anthropic_api_key:
+        os.environ["ANTHROPIC_API_KEY"] = settings.anthropic_api_key
+    if settings.openai_api_key:
+        os.environ["OPENAI_API_KEY"] = settings.openai_api_key
+    if settings.groq_api_key:
+        os.environ["GROQ_API_KEY"] = settings.groq_api_key
+
+
 def _get_llm_string(settings: Settings) -> str:
+    _export_llm_env(settings)
     if settings.llm_provider == "openai":
         return f"openai/{settings.default_model}"
+    if settings.llm_provider == "groq":
+        return f"groq/{settings.default_model}"
     return f"anthropic/{settings.default_model}"
 
 

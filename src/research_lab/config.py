@@ -10,9 +10,10 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     # LLM
-    llm_provider: Literal["anthropic", "openai"] = "anthropic"
+    llm_provider: Literal["anthropic", "openai", "groq"] = "anthropic"
     anthropic_api_key: str = ""
     openai_api_key: str = ""
+    groq_api_key: str = ""
     default_model: str = "claude-sonnet-4-6"
 
     # Pinecone

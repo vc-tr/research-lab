@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
     "crewai[tools]>=1.14.0",
+    "litellm>=1.50.0",
     "langchain-core>=0.3.0",
     "langchain-anthropic>=0.3.0",
     "langchain-community>=0.3.0",
@@ -31,6 +32,7 @@ dependencies = [
 [project.optional-dependencies]
 tavily = ["tavily-python>=0.5.0"]
 openai = ["langchain-openai>=0.3.0"]
+groq = ["langchain-groq>=0.2.0"]
 
 [dependency-groups]
 dev = [

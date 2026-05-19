@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import os
 
+os.environ["LLM_PROVIDER"] = "anthropic"
+os.environ["DEFAULT_MODEL"] = "claude-sonnet-4-6"
 os.environ["ANTHROPIC_API_KEY"] = "test-key"
 os.environ["PINECONE_API_KEY"] = "test-key"
 os.environ["LANGCHAIN_API_KEY"] = "test-key"

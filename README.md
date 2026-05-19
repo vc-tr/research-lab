@@ -54,6 +54,20 @@ uv run uvicorn research_lab.api.app:app --reload
 docker compose up
 ```
 
+## No Anthropic Credits?
+
+Use **Groq** for free LLM access (generous free tier, no credit card):
+
+1. Get a free API key at https://console.groq.com/keys
+2. In `.env`:
+   ```bash
+   LLM_PROVIDER=groq
+   GROQ_API_KEY=gsk_...
+   DEFAULT_MODEL=llama-3.3-70b-versatile
+   ```
+
+The same multi-agent pipeline works — only the underlying LLM changes.
+
 ## No Pinecone Account?
 
 Set `USE_PINECONE=false` in your `.env` file. The system falls back to LlamaIndex's in-memory `SimpleVectorStore` — no external services needed.
