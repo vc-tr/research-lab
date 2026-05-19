@@ -20,7 +20,13 @@ def _on_step(event_type: str, agent: str, content: str) -> None:
 @click.argument("question")
 @click.option("--model", default=None, help="Override default LLM model")
 @click.option("--no-pinecone", is_flag=True, help="Use in-memory vector store")
-def main(question: str, model: str | None, no_pinecone: bool) -> None:
+@click.option(
+    "--max-subtasks",
+    default=5,
+    type=int,
+    help="Number of parallel researcher agents (lower = less token usage)",
+)
+def main(question: str, model: str | None, no_pinecone: bool, max_subtasks: int) -> None:
     """Run a research query and produce a cited Markdown report."""
     from research_lab.config import get_settings
     from research_lab.crew import run_research
@@ -34,7 +40,12 @@ def main(question: str, model: str | None, no_pinecone: bool) -> None:
         settings.use_pinecone = False
 
     with console.status("[bold green]Researching..."):
-        report = run_research(question, settings=settings, step_callback=_on_step)
+        report = run_research(
+            question,
+            settings=settings,
+            step_callback=_on_step,
+            max_subtasks=max_subtasks,
+        )
 
     console.print()
     console.print(Markdown(report))

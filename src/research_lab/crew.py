@@ -152,12 +152,15 @@ def run_research(
     question: str,
     settings: Settings | None = None,
     step_callback: Callable[[str, str, str], None] | None = None,
+    max_subtasks: int = 5,
 ) -> str:
     if settings is None:
         from research_lab.config import get_settings
 
         settings = get_settings()
 
-    crew = build_crew(question, settings, step_callback=step_callback)
+    crew = build_crew(
+        question, settings, step_callback=step_callback, max_subtasks=max_subtasks
+    )
     result = crew.kickoff()
     return str(result)
