@@ -4,8 +4,14 @@
 from __future__ import annotations
 
 import sys
+from pathlib import Path
 
-from research_lab.config import get_settings
+# Allow running as `python scripts/verify_keys.py` even without editable install
+_SRC = Path(__file__).resolve().parent.parent / "src"
+if _SRC.is_dir() and str(_SRC) not in sys.path:
+    sys.path.insert(0, str(_SRC))
+
+from research_lab.config import get_settings  # noqa: E402
 
 
 def _check_anthropic(key: str) -> tuple[bool, str]:
