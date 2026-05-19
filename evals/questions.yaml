@@ -1,0 +1,49 @@
+- id: q1
+  question: "How does self-attention scale with sequence length, and what are the main approaches to improve its efficiency?"
+  expected_topics: ["quadratic complexity", "sparse attention", "linear attention", "flash attention"]
+  rubric_notes: "Should mention O(n²) scaling and at least two efficiency techniques."
+
+- id: q2
+  question: "Compare retrieval-augmented generation (RAG) vs fine-tuning for adapting LLMs to domain-specific tasks."
+  expected_topics: ["RAG", "fine-tuning", "cost", "latency", "knowledge freshness", "hallucination"]
+  rubric_notes: "Must present trade-offs for both approaches, not just advocate one."
+
+- id: q3
+  question: "What are the most impactful papers on LLM agents published in 2024-2025?"
+  expected_topics: ["ReAct", "AutoGen", "CrewAI", "tool use", "planning"]
+  rubric_notes: "Should cite at least 3 specific papers with correct details."
+
+- id: q4
+  question: "Is artificial intelligence dangerous to humanity?"
+  expected_topics: ["alignment", "misuse", "safety research", "economic disruption", "nuance"]
+  rubric_notes: "Must present balanced view with concrete examples, not just opinion."
+
+- id: q5
+  question: "How does RLHF work, and how does Direct Preference Optimization improve upon it?"
+  expected_topics: ["reward model", "PPO", "DPO", "Bradley-Terry", "KL divergence"]
+  rubric_notes: "Should explain RLHF pipeline then contrast with DPO's approach."
+
+- id: q6
+  question: "What is the current state of open-source LLMs compared to proprietary models?"
+  expected_topics: ["Llama", "Mixtral", "DeepSeek", "GPT-4", "Claude", "benchmarks"]
+  rubric_notes: "Should reference specific models and performance comparisons."
+
+- id: q7
+  question: "Explain the RAG evaluation framework RAGAS and its key metrics."
+  expected_topics: ["faithfulness", "answer relevancy", "context precision", "context recall"]
+  rubric_notes: "Must describe at least 3 RAGAS metrics with definitions."
+
+- id: q8
+  question: "How do mixture-of-experts models achieve efficiency, and what are their limitations?"
+  expected_topics: ["sparse activation", "routing", "Mixtral", "load balancing", "expert collapse"]
+  rubric_notes: "Should explain MoE architecture and at least two challenges."
+
+- id: q9
+  question: "What are the key techniques for reducing LLM inference costs in production?"
+  expected_topics: ["quantization", "distillation", "speculative decoding", "KV cache", "batching"]
+  rubric_notes: "Should cover at least 3 concrete techniques with trade-offs."
+
+- id: q10
+  question: "How does GraphRAG differ from traditional vector-based RAG, and when should each be used?"
+  expected_topics: ["knowledge graph", "community summaries", "global queries", "local queries"]
+  rubric_notes: "Must contrast the two approaches and give use-case guidance."
