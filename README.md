@@ -1,9 +1,9 @@
 # Research Lab
 
-A multi-agent research assistant that takes a question and produces a cited Markdown report. Built with **CrewAI**, **LangChain**, **LlamaIndex**, **Pinecone**, and **LangSmith**.
+[![CI](https://github.com/vc-tr/research-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/vc-tr/research-lab/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-<!-- TODO: Replace with actual screenshot -->
-<!-- ![Streaming Run](docs/streaming-screenshot.png) -->
+A multi-agent research assistant that takes a question and produces a cited Markdown report. Built with **CrewAI**, **LangChain**, **LlamaIndex**, **Pinecone**, and **LangSmith**.
 
 ## Architecture
 
@@ -141,8 +141,7 @@ Add an entry to `evals/questions.yaml`:
 
 ## LangSmith Trace
 
-<!-- TODO: Add public trace link after first live run -->
-<!-- [Example trace](https://smith.langchain.com/public/...) -->
+Tracing is enabled automatically when `LANGSMITH_API_KEY` is set — every planner / researcher / critic / writer step and tool call is captured for inspection and debugging.
 
 ## CI
 
@@ -165,3 +164,7 @@ GitHub Actions runs on every push/PR:
 | Eval | LLM-as-judge with fixed rubric |
 | CI/CD | GitHub Actions |
 | Package management | uv |
+
+## License
+
+Released under the [MIT License](LICENSE).
