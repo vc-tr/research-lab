@@ -1,0 +1,39 @@
+name: Eval
+
+# Full LLM-as-judge evaluation over the whole question set. Kept out of the
+# fast CI path (it makes real model calls and takes minutes). Run it manually,
+# or on the weekly schedule, once the required secrets are configured.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+
+jobs:
+  full-eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install Python
+        run: uv python install 3.11
+
+      - name: Sync dependencies
+        run: uv sync
+
+      - name: Run full evaluation
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
+          USE_PINECONE: "false"
+        run: uv run python -m evals.runner --questions evals/questions.yaml --output evals/reports/latest
+
+      - name: Upload eval report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: evals/reports/latest
