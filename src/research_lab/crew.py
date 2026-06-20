@@ -159,8 +159,6 @@ def run_research(
 
         settings = get_settings()
 
-    crew = build_crew(
-        question, settings, step_callback=step_callback, max_subtasks=max_subtasks
-    )
+    crew = build_crew(question, settings, step_callback=step_callback, max_subtasks=max_subtasks)
     result = crew.kickoff()
     return str(result)
